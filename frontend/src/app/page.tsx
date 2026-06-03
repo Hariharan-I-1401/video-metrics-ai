@@ -436,7 +436,7 @@ export default function Home() {
         <div className="flex items-center gap-6 w-full lg:w-auto">
           <div className="flex items-center justify-between w-full lg:w-auto">
             <a href="/" className="font-headline-md text-xl lg:text-2xl font-bold text-primary hover:opacity-80 transition-opacity">
-              <h1>VidioMetrics</h1>
+              <h1>VidioMetrics AI</h1>
             </a>
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden text-on-surface-variant">
               <Menu />
