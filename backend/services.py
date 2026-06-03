@@ -19,21 +19,29 @@ def extract_video_id_from_youtube_url(url: str) -> str:
     Supports: youtube.com/watch?v=, youtu.be/, youtube.com/shorts/
     """
     parsed_url = urllib.parse.urlparse(url)
-    if "youtube.com" in parsed_url.netloc:
+    netloc = parsed_url.netloc.lower()
+    if netloc == "youtube.com" or netloc.endswith(".youtube.com"):
         if "/shorts/" in parsed_url.path:
             return parsed_url.path.split("/shorts/")[1].split("/")[0]
         query_params = urllib.parse.parse_qs(parsed_url.query)
         return query_params.get("v", [""])[0]
-    elif "youtu.be" in parsed_url.netloc:
+    elif netloc == "youtu.be" or netloc.endswith(".youtu.be"):
         return parsed_url.path.lstrip("/")
     return ""
 
 
 def detect_platform(url: str) -> str:
     """Determine whether a URL is YouTube or Instagram."""
-    if "youtube" in url or "youtu.be" in url:
-        return "youtube"
-    return "instagram"
+    try:
+        parsed_url = urllib.parse.urlparse(url)
+        netloc = parsed_url.netloc.lower()
+        if netloc == "youtube.com" or netloc.endswith(".youtube.com") or netloc == "youtu.be" or netloc.endswith(".youtu.be"):
+            return "youtube"
+        elif netloc == "instagram.com" or netloc.endswith(".instagram.com"):
+            return "instagram"
+    except Exception:
+        pass
+    return "youtube"
 
 
 def extract_metadata(url: str) -> Dict[str, Any]:

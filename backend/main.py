@@ -85,7 +85,8 @@ async def process_videos(request: VideoProcessRequest):
         
         return {"status": "success", "metadata": active_metadata}
     except Exception as error:
-        raise HTTPException(status_code=500, detail=str(error))
+        print(f"Error processing videos: {error}")
+        raise HTTPException(status_code=500, detail="An unexpected error occurred while processing the videos.")
 
 
 # ──────────────────────────────────────────────
@@ -198,7 +199,8 @@ async def chat_with_assistant(request: ChatMessageRequest):
 
             yield "data: [DONE]\n\n"
         except Exception as error:
-            yield f"data: {json.dumps({'error': str(error)})}\n\n"
+            print(f"Error during streaming response: {error}")
+            yield f"data: {json.dumps({'error': 'An unexpected error occurred during chat processing.'})}\n\n"
 
     return StreamingResponse(stream_response(), media_type="text/event-stream")
 

@@ -216,7 +216,18 @@ const VectorIndex = ({ chunks }: { chunks: VectorChunk[] }) => {
   );
 };
 
-export default function Home() {
+const getPlatformName = (url: string) => {
+  try {
+    const hostname = new URL(url).hostname.toLowerCase();
+    if (hostname === 'instagram.com' || hostname.endsWith('.instagram.com')) return 'Instagram';
+    if (hostname === 'tiktok.com' || hostname.endsWith('.tiktok.com')) return 'TikTok';
+    return 'YouTube';
+  } catch {
+    return 'YouTube';
+  }
+};
+
+export default function VidioMetricsDashboard() {
   const [urlA, setUrlA] = useState("");
   const [urlB, setUrlB] = useState("");
   const [loading, setLoading] = useState(false);
@@ -561,14 +572,14 @@ export default function Home() {
             <h2 className="font-headline-md text-xl text-on-surface mb-2 font-semibold">Video Comparison</h2>
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 w-full">
               <VideoCard 
-                platformLabel={urlA.includes("instagram.com") ? "Instagram" : urlA.includes("tiktok.com") ? "TikTok" : "YouTube"} 
+                platformLabel={getPlatformName(urlA)} 
                 data={metadata?.A ?? null} 
-                icon={urlA.includes("instagram.com") ? <Video className="text-[#e1306c]" size={16} /> : urlA.includes("tiktok.com") ? <PlayCircle className="text-[#00f2fe]" size={16} /> : <PlayCircle className="text-[#ff0000]" size={16} />} 
+                icon={getPlatformName(urlA) === "Instagram" ? <Video className="text-[#e1306c]" size={16} /> : getPlatformName(urlA) === "TikTok" ? <PlayCircle className="text-[#00f2fe]" size={16} /> : <PlayCircle className="text-[#ff0000]" size={16} />} 
               />
               <VideoCard 
-                platformLabel={urlB.includes("instagram.com") ? "Instagram" : urlB.includes("tiktok.com") ? "TikTok" : "YouTube"} 
+                platformLabel={getPlatformName(urlB)} 
                 data={metadata?.B ?? null} 
-                icon={urlB.includes("instagram.com") ? <Video className="text-[#e1306c]" size={16} /> : urlB.includes("tiktok.com") ? <PlayCircle className="text-[#00f2fe]" size={16} /> : <PlayCircle className="text-[#ff0000]" size={16} />} 
+                icon={getPlatformName(urlB) === "Instagram" ? <Video className="text-[#e1306c]" size={16} /> : getPlatformName(urlB) === "TikTok" ? <PlayCircle className="text-[#00f2fe]" size={16} /> : <PlayCircle className="text-[#ff0000]" size={16} />} 
               />
             </div>
             
