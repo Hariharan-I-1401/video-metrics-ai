@@ -464,10 +464,6 @@ export default function VidioMetricsDashboard() {
           <button onClick={() => setHistoryOpen(true)} className="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 text-sm font-semibold">
             <History size={20} /> History
           </button>
-          <div className="w-px h-6 bg-outline-variant mx-2"></div>
-          <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-xs">
-            VM
-          </div>
         </div>
       </header>
       
@@ -488,7 +484,7 @@ export default function VidioMetricsDashboard() {
       <AnimatePresence>
         {historyOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setHistoryOpen(false)} />
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/80" onClick={() => setHistoryOpen(false)} />
             <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="bg-surface-container-low relative z-10 w-full max-w-lg rounded-2xl border border-outline-variant p-6 flex flex-col max-h-[80vh] overflow-hidden shadow-2xl">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="font-headline-md text-xl font-semibold text-on-surface flex items-center gap-2">
