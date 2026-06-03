@@ -1,5 +1,5 @@
 """
-VidioMetrics AI — Backend API Server
+VideoMetrics AI — Backend API Server
 FastAPI application for processing social media videos and running RAG-based chat.
 """
 from fastapi import FastAPI, HTTPException, Request
@@ -17,7 +17,7 @@ from rag import build_vector_store, get_rag_chain
 load_dotenv()
 
 app = FastAPI(
-    title="VidioMetrics AI",
+    title="VideoMetrics AI",
     description="RAG-powered social media video comparison API",
     version="1.0.0"
 )

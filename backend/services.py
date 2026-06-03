@@ -1,5 +1,5 @@
 """
-VidioMetrics AI — Video Processing Service
+VideoMetrics AI — Video Processing Service
 Handles metadata extraction, transcript retrieval, and engagement rate computation.
 Supports YouTube and Instagram Reels via yt-dlp, youtube-transcript-api, and AssemblyAI.
 """

@@ -1,5 +1,5 @@
 """
-VidioMetrics AI — RAG Chain Builder
+VideoMetrics AI — RAG Chain Builder
 Handles chunking, embedding, vector storage, and LangChain RAG chain construction.
 """
 import uuid
@@ -74,7 +74,7 @@ def build_vector_store(video_a_data: dict, video_b_data: dict) -> Chroma:
     embedding_model = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-2")
     
     # Generate a unique collection name per session to guarantee no stale data
-    session_collection_name = f"vidiometrics_{uuid.uuid4().hex[:12]}"
+    session_collection_name = f"videometrics_{uuid.uuid4().hex[:12]}"
     
     # Store in ChromaDB (fresh in-memory collection per analysis)
     vectorstore = Chroma.from_documents(

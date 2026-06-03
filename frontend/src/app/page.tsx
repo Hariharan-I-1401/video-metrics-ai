@@ -227,7 +227,7 @@ const getPlatformName = (url: string) => {
   }
 };
 
-export default function VidioMetricsDashboard() {
+export default function VideoMetricsDashboard() {
   const [urlA, setUrlA] = useState("");
   const [urlB, setUrlB] = useState("");
   const [loading, setLoading] = useState(false);
@@ -288,7 +288,7 @@ export default function VidioMetricsDashboard() {
   };
 
   useEffect(() => {
-    const savedHistory = localStorage.getItem("vidiometrics_history");
+    const savedHistory = localStorage.getItem("VideoMetrics_history");
     if (savedHistory) {
       try { setHistoryData(JSON.parse(savedHistory)); } catch (parseError) { console.warn("Failed to parse saved history:", parseError); }
     }
@@ -305,12 +305,12 @@ export default function VidioMetricsDashboard() {
     };
     const updatedHistory = [newEntry, ...historyData].slice(0, 10);
     setHistoryData(updatedHistory);
-    localStorage.setItem("vidiometrics_history", JSON.stringify(updatedHistory));
+    localStorage.setItem("VideoMetrics_history", JSON.stringify(updatedHistory));
   };
 
   const clearHistory = () => {
     setHistoryData([]);
-    localStorage.removeItem("vidiometrics_history");
+    localStorage.removeItem("VideoMetrics_history");
     toast.success("History cleared");
   };
 
@@ -447,7 +447,7 @@ export default function VidioMetricsDashboard() {
         <div className="flex items-center gap-6 w-full lg:w-auto">
           <div className="flex items-center justify-between w-full lg:w-auto">
             <a href="/" className="font-headline-md text-xl lg:text-2xl font-bold text-primary hover:opacity-80 transition-opacity">
-              <h1>VidioMetrics AI</h1>
+              <h1>VideoMetrics AI</h1>
             </a>
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden text-on-surface-variant">
               <Menu />

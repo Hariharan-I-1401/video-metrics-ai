@@ -14,7 +14,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "VidioMetrics AI | Social Video Analysis",
+  title: "VideoMetrics AI | Social Video Analysis",
   description: "Advanced RAG-based AI to analyze and compare social media videos.",
 };
 

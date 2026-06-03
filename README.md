@@ -1,4 +1,4 @@
-# VidioMetrics AI
+# VideoMetrics AI
 
 This is a tool that compares two videos. You can use it with YouTube or Instagram Reels. It looks at the words spoken in the videos the information about the videos and how people interact with them. It then lets you ask questions about the videos and gives you answers.
 
